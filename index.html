@@ -6,25 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Проектик</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,500&family=Libre+Franklin&display=swap');
         body {
+            font-family: 'EB Garamond', serif;
+            font-family: 'Libre Franklin', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: lightcoral;
             transition: all .25s;
+            background: url("https://source.unsplash.com/1600x900/?nature") center/100% no-repeat;
+            color: aliceblue;
         }
 
         div {
             text-align: center;
         }
         button {
-            border: 1px solid black;
+            border: 1px solid white;
             padding: 15px 20px;
             border-radius: 20px;
-            background: white;
+            background: transparent;
             cursor: pointer;
             outline: none;
+            color: white;
         }
         h1, h3 {
             animation: down 1s;
@@ -49,7 +54,16 @@
     </div>
 
     <script>
-        const name = prompt('Как вас зовут?')
+        let name
+        if (localStorage.getItem('my-name')) {
+            name = localStorage.getItem('my-name')
+
+        } else {
+            name = prompt('Как вас зовут?')
+            localStorage.setItem('my-name', name)
+
+        }
+
         document.querySelector('h3').textContent = 'Привет,'+name
         document.querySelector('h1').textContent = 'Сейчас'+new Date().toLocaleTimeString();
         
@@ -64,8 +78,6 @@
             index++
             if (index >= colors.length) index = 0
         }
-
-
     </script>
 </body>
 </html>
